@@ -11,23 +11,19 @@ namespace MyAdventureGame.InputChecks
     /// </summary>
     public class IntegerInputCheck
     {
-        /// <summary>
-        /// This method checks if the input string is a valid integer.
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         public static bool IsValidInteger(string input)
         {
+            int number;
             do
             {
-                if (!int.TryParse(input, out _))
+                if (!int.TryParse(input, out number))
                 {
-                    Console.WriteLine("Input must be a valid integer. Please try again.");
-                    input = Console.ReadLine();
+                    return true;
                 }
                 else
                 {
-                    return true;
+                    Console.WriteLine("Input must be a valid integer. Please try again.");
+                    input = Console.ReadLine();
                 }
             }
             while (true);

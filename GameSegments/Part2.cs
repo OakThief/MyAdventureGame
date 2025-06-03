@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MyAdventureGame.InputChecks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace MyAdventureGame.GameSegments
@@ -69,7 +71,7 @@ namespace MyAdventureGame.GameSegments
 
             Random shots = new Random();
             int shot = shots.Next(1, 4);
-            int numberChoice;
+            string userInput = "";
 
             if (hasSupplies == true)
             {
@@ -78,17 +80,18 @@ namespace MyAdventureGame.GameSegments
                 Console.WriteLine("You take out your slingshot and gather some stones from the floor around you.");
                 Thread.Sleep(1500);
                 Console.WriteLine("Press a number between 1 and 3 to see if you hit the switch.");
-                numberChoice = Convert.ToInt32(Console.ReadLine());
+                userInput = Console.ReadLine();
+                IntegerInputCheck.IsValidInteger(userInput);
 
-                while (numberChoice != shot)
-                {
-                    Console.WriteLine("You miss the switch, try again.");
-                    numberChoice = Convert.ToInt32(Console.ReadLine());
-                }
-                if (numberChoice == shot)
-                {
-                    Console.WriteLine("You hit the switch and the door creeks open.");
-                }
+                //while (int.TryParse(userInput) != shot)
+                //{
+                //    Console.WriteLine("You miss the switch, try again.");
+                //    userInput = Console.ReadLine();
+                //}
+                //if (userInput == shot)
+                //{
+                //    Console.WriteLine("You hit the switch and the door creeks open.");
+                //}
 
             }
             else
@@ -99,17 +102,17 @@ namespace MyAdventureGame.GameSegments
                 Thread.Sleep(1500);
                 Console.WriteLine("Press a number between 1 and 6 to see if you hit the switch.");
 
-                numberChoice = Convert.ToInt32(Console.ReadLine());
+                userInput = Console.ReadLine();
 
-                while (numberChoice != shot)
-                {
-                    Console.WriteLine("You miss the switch, try again.");
-                    numberChoice = Convert.ToInt32(Console.ReadLine());
-                }
-                if (numberChoice == shot)
-                {
-                    Console.WriteLine("You hit the switch and the door creeks open.");
-                }
+                //while (userInput != shot)
+                //{
+                //    Console.WriteLine("You miss the switch, try again.");
+                //    userInput = Console.ReadLine();
+                //}
+                //if (userInput == shot)
+                //{
+                //    Console.WriteLine("You hit the switch and the door creeks open.");
+                //}
             }
             Thread.Sleep(1500);
             Console.WriteLine("Behind the door you see The Lost Relic of Eldara.\n" +
