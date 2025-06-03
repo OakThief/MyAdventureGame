@@ -18,10 +18,7 @@ namespace MyAdventureGame.GameSegments
 
             string playerName = Console.ReadLine();
 
-            while (!StringEmptyInputCheck.IsValidString(playerName))
-            {
-                playerName = Console.ReadLine();
-            }
+            StringInputCheck.IsValidString(playerName);
 
             Console.Clear();
 
