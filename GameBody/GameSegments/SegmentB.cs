@@ -1,4 +1,4 @@
-﻿using MyAdventureGame.InputChecks;
+﻿using MyAdventureGame.GameBody.InputChecks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,14 +6,15 @@ using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace MyAdventureGame.GameSegments
+namespace MyAdventureGame.GameBody.GameSegments
 {
-    internal class Part2
+    internal class SegmentB
     {
         bool hasSupplies = false;
         bool symbolClue = false;
         string playerChoice = "";
-        public void Run()
+
+        public void Part2()
         {
             Console.WriteLine("You come to the ancient temple, ruined and overgrown.");
             Thread.Sleep(1500);
@@ -71,7 +72,7 @@ namespace MyAdventureGame.GameSegments
 
             Random shots = new Random();
             int shot = shots.Next(1, 4);
-            string userInput = "";
+            int userInput;
 
             if (hasSupplies == true)
             {
@@ -80,18 +81,18 @@ namespace MyAdventureGame.GameSegments
                 Console.WriteLine("You take out your slingshot and gather some stones from the floor around you.");
                 Thread.Sleep(1500);
                 Console.WriteLine("Press a number between 1 and 3 to see if you hit the switch.");
-                userInput = Console.ReadLine();
-                IntegerInputCheck.IsValidInteger(userInput);
+                userInput = int.Parse(Console.ReadLine());
+                IntegerInputCheck.IsValidInteger(userInput.ToString());
 
-                //while (int.TryParse(userInput) != shot)
-                //{
-                //    Console.WriteLine("You miss the switch, try again.");
-                //    userInput = Console.ReadLine();
-                //}
-                //if (userInput == shot)
-                //{
-                //    Console.WriteLine("You hit the switch and the door creeks open.");
-                //}
+                while (userInput != shot)
+                {
+                    Console.WriteLine("You miss the switch, try again.");
+                    userInput = int.Parse(Console.ReadLine());
+                }
+                if (userInput == shot)
+                {
+                    Console.WriteLine("You hit the switch and the door creeks open.");
+                }
 
             }
             else
@@ -102,17 +103,33 @@ namespace MyAdventureGame.GameSegments
                 Thread.Sleep(1500);
                 Console.WriteLine("Press a number between 1 and 6 to see if you hit the switch.");
 
-                userInput = Console.ReadLine();
 
-                //while (userInput != shot)
-                //{
-                //    Console.WriteLine("You miss the switch, try again.");
-                //    userInput = Console.ReadLine();
-                //}
-                //if (userInput == shot)
-                //{
-                //    Console.WriteLine("You hit the switch and the door creeks open.");
-                //}
+                if (!int.TryParse(Console.ReadLine(), out userInput))
+                {
+                    while (userInput != shot)
+                    {
+                        Console.WriteLine("You miss the switch, try again.");
+                        int.TryParse(Console.ReadLine(), out userInput);
+                    }
+                    if (userInput == shot)
+                    {
+                        Console.WriteLine("You hit the switch and the door creeks open.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
+
+                while (userInput != shot)
+                {
+                    Console.WriteLine("You miss the switch, try again.");
+                    userInput = int.Parse(Console.ReadLine());
+                }
+                if (userInput == shot)
+                {
+                    Console.WriteLine("You hit the switch and the door creeks open.");
+                }
             }
             Thread.Sleep(1500);
             Console.WriteLine("Behind the door you see The Lost Relic of Eldara.\n" +

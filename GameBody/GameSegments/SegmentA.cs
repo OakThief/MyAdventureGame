@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyAdventureGame.GameSegments
+namespace MyAdventureGame.GameBody.GameSegments
 {
-    internal class Part1
+    internal class SegmentA
     {
         bool hasSupplies;
         bool symbolClue;
         // This class represents the first part of the adventure game.
         // It introduces the player to the setting and presents a choice of paths.
-        public void Run()
+        public void Part1()
         {
             Console.WriteLine("Your walking through a dense, misty forest.");
             Thread.Sleep(1500);

@@ -1,15 +1,15 @@
-﻿using MyAdventureGame.InputChecks;
+﻿using MyAdventureGame.GameBody.InputChecks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyAdventureGame.GameSegments
+namespace MyAdventureGame.GameBody.GameSegments
 {
-    internal class Intro
+    internal class IntroSegment
     {
-        public void Run()
+        public void Intro()
         {
             Console.WriteLine("Welcome to my Adventure Game! \n" +
                "This is a 5 minute text adventure to showcase what i've been learning.");

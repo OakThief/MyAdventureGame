@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyAdventureGame.InputChecks
+namespace MyAdventureGame.GameBody.InputChecks
 {
     /// <summary>
     /// This class provides a method to check if the input string is a valid integer.

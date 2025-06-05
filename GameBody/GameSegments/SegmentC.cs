@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyAdventureGame.GameSegments
+namespace MyAdventureGame.GameBody.GameSegments
 {
-    internal class Part3
+    internal class SegmentC
     {
-        public void Run()
+        public void Part3()
         {
             Console.WriteLine("The guardian is a tall, shadowy figure with glowing eyes.");
             Thread.Sleep(1500);

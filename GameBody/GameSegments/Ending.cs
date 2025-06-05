@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyAdventureGame.GameSegments
+namespace MyAdventureGame.GameBody.GameSegments
 {
     internal class Ending
     {
-        public void Run()
+        public void EndDialouge()
         {
             Console.WriteLine("You have completed the game! \n" +
                 "Thank you for playing!");
