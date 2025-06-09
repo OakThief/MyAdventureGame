@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyAdventureGame.GameBody.GameSegments;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,22 +12,33 @@ namespace MyAdventureGame.GameBody.InputChecks
     /// </summary>
     public class IntegerInputCheck
     {
-        public static bool IsValidInteger(string input)
+        /// <summary>
+        /// This method checks if the input string is a valid integer.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static int GetValidIntegerInput(string prompt)
         {
-            int number;
-            do
+            bool isValid = false;
+            int parsedInteger;
+
+            while (!isValid)
             {
-                if (!int.TryParse(input, out number))
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out parsedInteger))
                 {
-                    return true;
+                    isValid = true;
                 }
                 else
                 {
-                    Console.WriteLine("Input must be a valid integer. Please try again.");
-                    input = Console.ReadLine();
+                    Console.WriteLine("Invalid input. Please enter a valid integer.");
                 }
             }
-            while (true);
+
+            return parsedInteger;
         }
+
     }
 }

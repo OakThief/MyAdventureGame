@@ -7,8 +7,15 @@ using MyAdventureGame.GameBody;
 
 namespace MyAdventureGame
 {
+    /// <summary>
+    /// This class represents the main entry point for the game application.
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// The main entry point for the game application. It initializes the game and starts the adventure.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         { 
             var game = new Game();

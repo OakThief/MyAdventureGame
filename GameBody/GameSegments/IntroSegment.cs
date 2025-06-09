@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace MyAdventureGame.GameBody.GameSegments
 {
+    /// <summary>
+    /// This class handles the introductory segment of the game, setting the stage for the adventure.
+    /// </summary>
     internal class IntroSegment
     {
-        public void Intro()
+        /// <summary>
+        /// Displays the introduction to the game, prompts for the player's name, and sets the scene for the adventure.
+        /// </summary>
+        public void Intro(GameState state, StringInputCheck check)
         {
             Console.WriteLine("Welcome to my Adventure Game! \n" +
                "This is a 5 minute text adventure to showcase what i've been learning.");
