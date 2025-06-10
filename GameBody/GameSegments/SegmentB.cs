@@ -1,17 +1,25 @@
-﻿using System;
+﻿using MyAdventureGame.GameBody.InputChecks;
+using MyAdventureGame.GameBody;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace MyAdventureGame.GameSegments
+namespace MyAdventureGame.GameBody.GameSegments
 {
-    internal class Part2
+    /// <summary>
+    /// This class represents the second segment of the game, where the player navigates through an ancient temple and encounters a guardian.
+    /// </summary>
+    internal class SegmentB
     {
-        bool hasSupplies = false;
-        bool symbolClue = false;
         string playerChoice = "";
-        public void Run()
+
+        /// <summary>
+        /// This method represents the second part of the game where the player navigates through an ancient temple and hits a switch to open a door, leading to the Lost Relic of Eldara.
+        /// </summary>
+        public void Part2(GameState state, StringInputCheck check)
         {
             Console.WriteLine("You come to the ancient temple, ruined and overgrown.");
             Thread.Sleep(1500);
@@ -19,7 +27,7 @@ namespace MyAdventureGame.GameSegments
                 "The symbols are what looks to be a sun and a moon.");
             Thread.Sleep(1500);
 
-            if (symbolClue == true)
+            if (state.symbolClue)
             {
                 Console.WriteLine("You remember the symbols you saw earlier and realize they are the same as the sun symbol.");
                 Thread.Sleep(1500);
@@ -37,18 +45,18 @@ namespace MyAdventureGame.GameSegments
                     playerChoice = Console.ReadLine();
                 }
 
-                if (playerChoice == "sun")
+                if (playerChoice == "SUN")
                 {
                     Console.WriteLine("You press the stone with the sun symbol, and the door creaks open, revealing a dark hall.");
                     Thread.Sleep(1500);
                 }
-                else if (playerChoice == "moon")
+                else if (playerChoice == "MOON")
                 {
                     Console.WriteLine("You press the stone with the moon symbol, and suddenly the floor beneath you swings open!");
                     Thread.Sleep(1500);
                     Console.WriteLine("You narrowly manage to grasp the edge but lose your slingshot in the process.");
                     Thread.Sleep(1500);
-                    hasSupplies = false;
+                    state.hasSupplies = false;
 
                     Console.WriteLine("You pull yourself up into the doorway of the temple revealing a dark hall.");
                     Thread.Sleep(1500);
@@ -69,23 +77,22 @@ namespace MyAdventureGame.GameSegments
 
             Random shots = new Random();
             int shot = shots.Next(1, 4);
-            int numberChoice;
+            int userInput = 0;
 
-            if (hasSupplies == true)
+            if (state.hasSupplies == true)
             {
                 shot = shots.Next(1, 4);
 
                 Console.WriteLine("You take out your slingshot and gather some stones from the floor around you.");
                 Thread.Sleep(1500);
-                Console.WriteLine("Press a number between 1 and 3 to see if you hit the switch.");
-                numberChoice = Convert.ToInt32(Console.ReadLine());
+                userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 3: ", 0);
 
-                while (numberChoice != shot)
+                while (userInput != shot)
                 {
                     Console.WriteLine("You miss the switch, try again.");
-                    numberChoice = Convert.ToInt32(Console.ReadLine());
+                    userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 3: ", 0);
                 }
-                if (numberChoice == shot)
+                if (userInput == shot)
                 {
                     Console.WriteLine("You hit the switch and the door creeks open.");
                 }
@@ -97,16 +104,32 @@ namespace MyAdventureGame.GameSegments
 
                 Console.WriteLine("You look around and grab some stones to throw at the switch.");
                 Thread.Sleep(1500);
-                Console.WriteLine("Press a number between 1 and 6 to see if you hit the switch.");
+                userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 6: ", 0);
 
-                numberChoice = Convert.ToInt32(Console.ReadLine());
 
-                while (numberChoice != shot)
+                if (!int.TryParse(Console.ReadLine(), out userInput))
+                {
+                    while (userInput != shot)
+                    {
+                        Console.WriteLine("You miss the switch, try again.");
+                        userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 6: ", 0);
+                    }
+                    if (userInput == shot)
+                    {
+                        Console.WriteLine("You hit the switch and the door creeks open.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
+
+                while (userInput != shot)
                 {
                     Console.WriteLine("You miss the switch, try again.");
-                    numberChoice = Convert.ToInt32(Console.ReadLine());
+                    userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 6: ", 0);
                 }
-                if (numberChoice == shot)
+                if (userInput == shot)
                 {
                     Console.WriteLine("You hit the switch and the door creeks open.");
                 }

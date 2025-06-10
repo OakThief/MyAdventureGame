@@ -1,14 +1,22 @@
-﻿using System;
+﻿using MyAdventureGame.GameBody.InputChecks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyAdventureGame.GameSegments
+namespace MyAdventureGame.GameBody.GameSegments
 {
-    internal class Part3
+    /// <summary>
+    /// This class represents the third segment of the game, where the player encounters a guardian and must prove their worth through a memory game to claim the Lost Relic of Eldara.
+    /// </summary>
+    internal class SegmentC
     {
-        public void Run()
+        /// <summary>
+        /// This method represents the third part of the game where the player encounters a guardian and must prove their worth through a memory game to claim the Lost Relic of Eldara.
+        /// </summary>
+
+        public void Part3(GameState state, StringInputCheck check)
         {
             Console.WriteLine("The guardian is a tall, shadowy figure with glowing eyes.");
             Thread.Sleep(1500);

@@ -1,18 +1,21 @@
-﻿using System;
+﻿using MyAdventureGame.GameBody.InputChecks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyAdventureGame.GameSegments
+namespace MyAdventureGame.GameBody.GameSegments
 {
-    internal class Part1
+    /// <summary>
+    /// This class represents the first segment of the game, where the player navigates through a forest and encounters a choice that leads to different outcomes.
+    /// </summary>
+    internal class SegmentA
     {
-        bool hasSupplies;
-        bool symbolClue;
-        // This class represents the first part of the adventure game.
-        // It introduces the player to the setting and presents a choice of paths.
-        public void Run()
+        /// <summary>
+        /// This method represents the first part of the game where the player makes a choice between two paths in a forest.
+        /// </summary>
+        public void Part1(GameState state, StringInputCheck check)
         {
             Console.WriteLine("Your walking through a dense, misty forest.");
             Thread.Sleep(1500);
@@ -43,7 +46,7 @@ namespace MyAdventureGame.GameSegments
                 Thread.Sleep(1500);
                 Console.WriteLine("You take a moment to memorize the symbols then continue through the overgrown path.");
 
-                symbolClue = true;
+                state.symbolClue = true;
 
                 Thread.Sleep(1500);
                 Console.WriteLine("The bushes seem to start to thin and you come to a path leading to some vine draped stairs.");
@@ -78,7 +81,7 @@ namespace MyAdventureGame.GameSegments
                     Thread.Sleep(1500);
                     Console.WriteLine("He passes you a map and a simple slingshot, you thank him for the food and supplies, then continue on your way.");
                     Thread.Sleep(1500);
-                    hasSupplies = true;
+                    state.hasSupplies = true;
                 }
                 else if (playerChoice == "N")
                 {
@@ -88,7 +91,7 @@ namespace MyAdventureGame.GameSegments
                     Thread.Sleep(1500);
                 }
 
-                if (hasSupplies)
+                if (state.hasSupplies)
                 {
                     Console.WriteLine("You take a moment to study the map and notice the temple is at the end of the path, down some stiars.");
                     Thread.Sleep(1500);
@@ -96,7 +99,7 @@ namespace MyAdventureGame.GameSegments
                     Thread.Sleep(1500);
                     Console.WriteLine("You take a moment to memorize the symbols then continue on your way.");
                     Thread.Sleep(1500);
-                    symbolClue = true;
+                    state.symbolClue = true;
 
                 }
                 else
