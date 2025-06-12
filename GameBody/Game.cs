@@ -24,12 +24,12 @@ namespace MyAdventureGame.GameBody
             var part2 = new SegmentB();
             var part3 = new SegmentC();
             var ending = new Ending();
-            var gameState = new GameState();
+            var playerState = new PlayerState();
 
-            intro.Intro(gameState, stringInputCheck);
-            part1.Part1(gameState, stringInputCheck);
-            part2.Part2(gameState, stringInputCheck);
-            part3.Part3(gameState, stringInputCheck);
+            intro.Intro(playerState, stringInputCheck);
+            part1.Part1(playerState, stringInputCheck);
+            part2.Part2(playerState, stringInputCheck);
+            part3.Part3(playerState, stringInputCheck);
             ending.EndDialouge();
         }
     }

@@ -13,31 +13,14 @@ namespace MyAdventureGame.GameBody.InputChecks
     public class IntegerInputCheck
     {
         /// <summary>
-        /// This method checks if the input string is a valid integer.
+        /// This method checks if the input string is a valid integer and greater than or equal to zero.
         /// </summary>
         /// <param name="input"></param>
+        /// <param name="number"></param>
         /// <returns></returns>
-        public static int GetValidIntegerInput(string prompt)
+        public static bool GetValidIntegerInput(string input, out int number)
         {
-            bool isValid = false;
-            int parsedInteger;
-
-            while (!isValid)
-            {
-                Console.Write(prompt);
-                string input = Console.ReadLine();
-
-                if (int.TryParse(input, out parsedInteger))
-                {
-                    isValid = true;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please enter a valid integer.");
-                }
-            }
-
-            return parsedInteger;
+            return int.TryParse(input, out number) && number >= 0;
         }
 
     }

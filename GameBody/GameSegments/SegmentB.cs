@@ -19,7 +19,7 @@ namespace MyAdventureGame.GameBody.GameSegments
         /// <summary>
         /// This method represents the second part of the game where the player navigates through an ancient temple and hits a switch to open a door, leading to the Lost Relic of Eldara.
         /// </summary>
-        public void Part2(GameState state, StringInputCheck check)
+        public void Part2(PlayerState state, StringInputCheck check)
         {
             Console.WriteLine("You come to the ancient temple, ruined and overgrown.");
             Thread.Sleep(1500);
@@ -77,7 +77,8 @@ namespace MyAdventureGame.GameBody.GameSegments
 
             Random shots = new Random();
             int shot = shots.Next(1, 4);
-            int userInput = 0;
+            string input;
+            int number;
 
             if (state.hasSupplies == true)
             {
@@ -85,16 +86,23 @@ namespace MyAdventureGame.GameBody.GameSegments
 
                 Console.WriteLine("You take out your slingshot and gather some stones from the floor around you.");
                 Thread.Sleep(1500);
-                userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 3: ", 0);
 
-                while (userInput != shot)
+                while (true)
                 {
-                    Console.WriteLine("You miss the switch, try again.");
-                    userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 3: ", 0);
-                }
-                if (userInput == shot)
-                {
-                    Console.WriteLine("You hit the switch and the door creeks open.");
+                    Console.WriteLine("Guess a number between 1 and 3 to see if you hit the switch.");
+                    input = Console.ReadLine();
+
+                    if (IntegerInputCheck.GetValidIntegerInput(input, out number) && number != shot)
+                    {
+                        Console.WriteLine("You miss the switch, try again.");
+                        input = Console.ReadLine();
+                    }
+                    else if (IntegerInputCheck.GetValidIntegerInput(input, out number) && number == shot)
+                    {
+                        Console.WriteLine("You hit the switch and the door creeks open.");
+                        break;
+                    }
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
                 }
 
             }
@@ -104,35 +112,25 @@ namespace MyAdventureGame.GameBody.GameSegments
 
                 Console.WriteLine("You look around and grab some stones to throw at the switch.");
                 Thread.Sleep(1500);
-                userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 6: ", 0);
 
-
-                if (!int.TryParse(Console.ReadLine(), out userInput))
+                while (true)
                 {
-                    while (userInput != shot)
+                    Console.WriteLine("Guess a number between 1 and 6 to see if you hit the switch.");
+                    input = Console.ReadLine();
+
+                    if (IntegerInputCheck.GetValidIntegerInput(input, out number) && number != shot)
                     {
                         Console.WriteLine("You miss the switch, try again.");
-                        userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 6: ", 0);
+                        input = Console.ReadLine();
                     }
-                    if (userInput == shot)
+                    else if (IntegerInputCheck.GetValidIntegerInput(input, out number) && number == shot)
                     {
                         Console.WriteLine("You hit the switch and the door creeks open.");
+                        break;
                     }
-                }
-                else
-                {
                     Console.WriteLine("Invalid input. Please enter a valid number.");
                 }
 
-                while (userInput != shot)
-                {
-                    Console.WriteLine("You miss the switch, try again.");
-                    userInput = IntegerInputCheck.GetValidIntegerInput("Enter a number between 1 and 6: ", 0);
-                }
-                if (userInput == shot)
-                {
-                    Console.WriteLine("You hit the switch and the door creeks open.");
-                }
             }
             Thread.Sleep(1500);
             Console.WriteLine("Behind the door you see The Lost Relic of Eldara.\n" +

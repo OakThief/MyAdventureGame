@@ -15,7 +15,7 @@ namespace MyAdventureGame.GameBody.GameSegments
         /// <summary>
         /// This method represents the first part of the game where the player makes a choice between two paths in a forest.
         /// </summary>
-        public void Part1(GameState state, StringInputCheck check)
+        public void Part1(PlayerState state, StringInputCheck check)
         {
             Console.WriteLine("Your walking through a dense, misty forest.");
             Thread.Sleep(1500);

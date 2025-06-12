@@ -16,7 +16,7 @@ namespace MyAdventureGame.GameBody.GameSegments
         /// This method represents the third part of the game where the player encounters a guardian and must prove their worth through a memory game to claim the Lost Relic of Eldara.
         /// </summary>
 
-        public void Part3(GameState state, StringInputCheck check)
+        public void Part3(PlayerState state, StringInputCheck check)
         {
             Console.WriteLine("The guardian is a tall, shadowy figure with glowing eyes.");
             Thread.Sleep(1500);

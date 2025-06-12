@@ -15,20 +15,20 @@ namespace MyAdventureGame.GameBody.GameSegments
         /// <summary>
         /// Displays the introduction to the game, prompts for the player's name, and sets the scene for the adventure.
         /// </summary>
-        public void Intro(GameState state, StringInputCheck check)
+        public void Intro(PlayerState state, StringInputCheck check)
         {
             Console.WriteLine("Welcome to my Adventure Game! \n" +
                "This is a 5 minute text adventure to showcase what i've been learning.");
             Thread.Sleep(1500);
             Console.WriteLine("Please enter your name:");
 
-            string playerName = Console.ReadLine();
+            state.playerName = Console.ReadLine();
 
-            StringInputCheck.IsValidString(playerName);
+            StringInputCheck.IsValidString(state.playerName);
 
             Console.Clear();
 
-            Console.WriteLine($"You are {playerName}, an explorer in search of the Lost Relic of Eldara,\n" +
+            Console.WriteLine($"You are {state.playerName}, an explorer in search of the Lost Relic of Eldara,\n" +
                 "it is said to grant the wisdom of the ancients.");
             Thread.Sleep(1500);
             Console.WriteLine("Your journey begins now.");
